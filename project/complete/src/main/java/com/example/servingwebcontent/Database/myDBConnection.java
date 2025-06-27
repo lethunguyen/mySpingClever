@@ -42,10 +42,15 @@ public class myDBConnection {
     }
 
     public Connection getOnlyConn() {
+        try {
+            Class.forName(myDatabaseDriver);
 
-        Class.forName(myDatabaseDriver);
+            conn = DriverManager.getConnection(myDatabaseURL);
+            return conn;
 
-        conn = DriverManager.getConnection(myDatabaseURL);
+        } catch (Exception e) {
+            System.out.println("Database connection error: " + e);
+        }
 
         return conn;
 
