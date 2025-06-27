@@ -5,57 +5,27 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.*;
-//import java.util.List;
-
-
-
 import com.example.servingwebcontent.Song;
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+
 
 
 @Controller
 public class songAiven {
-
-
-  
-    @Value("${my.test}") 
-    private String urlString;
-
-    @Value("${my.database.driver}")
-    private String myDriver;
-   
-//phan write to bien 33 khong lam viec
-    
-
-    /*
-     * to do
-     * mapping database data to Model Song
-     */
+@Value("${my.database.url}") 
+private String urlString;
+@Value("${my.database.driver}")
+private String myDriver;
 
     ArrayList<Song> items = new ArrayList<Song>();
 
     public ArrayList<Song> songAivenList() {
 
-      
-
-        Connection conn = null;
         try {
 
-            Class.forName(myDriver);
-             conn = DriverManager.getConnection(
-             urlString);
-
-           // conn = DriverManager.getConnection(conn);
-            Statement sta = conn.createStatement();
+            myDBConnection my = new myDBConnection();
+            Statement sta = my.getMyConn();
 
             ResultSet setdata = sta.executeQuery("select * from song limit 10");
             int index = 0;

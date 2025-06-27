@@ -8,15 +8,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 
 
 import com.example.servingwebcontent.Song;
 
-import org.springframework.stereotype.Component;
-
-
-@Component
+@Controller
 public class songSearchAiven {
+
+    @Value("${my.database.url}") 
+    private String urlString;
+
+    @Value("${my.database.driver}")
+    private String myDriver;
 
     public songSearchAiven() {
     }
@@ -36,10 +41,9 @@ public class songSearchAiven {
         Connection conn = null;
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(myDriver);
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
-                    "sqluser", "password");
+                    urlString);
 
             // conn = DriverManager.getConnection(pro.getURL());
             Statement sta = conn.createStatement();
