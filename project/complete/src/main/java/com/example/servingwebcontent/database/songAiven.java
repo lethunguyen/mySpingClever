@@ -13,11 +13,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class songAiven {
-@Value("${my.database.url}") 
-private String urlString;
-@Value("${my.database.driver}")
-private String myDriver;
-
+    
     ArrayList<Song> items = new ArrayList<Song>();
 
     public ArrayList<Song> songAivenList() {
@@ -60,7 +56,7 @@ private String myDriver;
 
             setdata.close();
             sta.close();
-            conn.close();
+            //my.close();
 
         } catch (Exception e) {
             System.out.println("Error in database connecion");

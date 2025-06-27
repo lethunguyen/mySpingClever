@@ -8,11 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 //import java.util.List;
 
+import org.springframework.stereotype.Controller;
+
 import com.example.servingwebcontent.ListUser;
 import com.example.servingwebcontent.User;
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 
-
+@Controller
 public class userAiven {
 
     ArrayList<User> items = new ArrayList<User>(); 
@@ -25,12 +27,13 @@ public class userAiven {
       
         Connection conn = null;
         try {
-           
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(
-                    "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
-                    "sqluser", "password");
-            Statement sta = conn.createStatement();
+        //
+         //   *Class.forName("com.mysql.cj.jdbc.Driver");
+         //   conn = DriverManager.getConnection(
+         //           "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
+          //          "sqluser", "password");
+         //   Statement sta = conn.createStatement(); 
+        
 
             ResultSet setdata = sta.executeQuery("select * from user");
             int index =0;

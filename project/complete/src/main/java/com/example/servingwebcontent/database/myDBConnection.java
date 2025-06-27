@@ -31,6 +31,7 @@ public class myDBConnection {
             return sta;
         } catch (Exception e) {
             System.out.println(e);
+            System.out.print("myDBConnection at34");
 
         }
 
