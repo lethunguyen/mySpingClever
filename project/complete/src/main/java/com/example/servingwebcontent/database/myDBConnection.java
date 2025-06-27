@@ -1,11 +1,10 @@
 package com.example.servingwebcontent.database;
 
 import org.springframework.stereotype.Controller;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.lang.Class;
 import java.sql.Statement;
-
 import org.springframework.beans.factory.annotation.Value;
 
 @Controller
@@ -13,28 +12,27 @@ public class myDBConnection {
     myDBConnection() {
     };
 
-    @Value("${my.database.url}")
-    protected String myDatabaseURL;
+    // @Value("${my.database.url}")
+    // protected String myDatabaseURL;
 
-    @Value("${my.database.driver}")
-    protected String myDatabaseDriver;
+    String myDatabaseURL = "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED";
 
-   // Connection getconn = null;
-      Connection conn = null;
+    // @Value("${my.database.driver}")
+    // protected String myDatabaseDriver;
+
+    String myDatabaseDriver = "com.mysql.cj.jdbc.Driver";
+
+    // Connection getconn = null;
+    public Connection conn = null;
+
     public Statement getMyConn() {
-      
 
         try {
-            // Class.forName(myDatabaseDriver);
 
-            // getconn = DriverManager.getConnection(myDatabaseURL);
+            Class.forName(myDatabaseDriver);
 
-            // Statement sta = getconn.createStatement();
+            conn = DriverManager.getConnection(myDatabaseURL);
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(
-                    "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
-                    "sqluser", "password");
             Statement sta = conn.createStatement();
             return sta;
         } catch (Exception e) {
@@ -44,6 +42,16 @@ public class myDBConnection {
         }
 
         return null;
+
+    }
+
+    public Connection getOnlyConn() {
+
+        Class.forName(myDatabaseDriver);
+
+        conn = DriverManager.getConnection(myDatabaseURL);
+
+        return conn;
 
     }
 

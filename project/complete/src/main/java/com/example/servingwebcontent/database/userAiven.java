@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-//import java.util.List;
+
 
 import org.springframework.stereotype.Controller;
 
@@ -17,21 +17,13 @@ import com.mysql.cj.jdbc.result.ResultSetMetaData;
 public class userAiven {
 
     ArrayList<User> items = new ArrayList<User>();
-    // User user = new User();
-
-    /**
-     * @return
-     */
+   
     public ArrayList<User> userAivenList() {
 
-        Connection conn = null;
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(
-                    "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
-                    "sqluser", "password");
-            Statement sta = conn.createStatement();
+            myDBConnection my = new myDBConnection();
+            Statement sta = my.getMyConn();
 
             ResultSet setdata = sta.executeQuery("select * from user");
             int index = 0;
@@ -62,7 +54,8 @@ public class userAiven {
 
             setdata.close();
             sta.close();
-            conn.close();
+            //can phuong thuc close
+            //conn.close();
 
         } catch (Exception e) {
             System.out.println("Error in database connecion");

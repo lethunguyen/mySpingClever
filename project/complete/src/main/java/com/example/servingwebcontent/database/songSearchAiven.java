@@ -38,15 +38,10 @@ public class songSearchAiven {
      */
     public ArrayList<Song> songAivenSearch(String songName) {
 
-        Connection conn = null;
         try {
 
-            Class.forName(myDriver);
-            conn = DriverManager.getConnection(
-                    urlString);
-
-            // conn = DriverManager.getConnection(pro.getURL());
-            Statement sta = conn.createStatement();
+            myDBConnection my = new myDBConnection();
+            Connection conn = my.getOnlyConn();
 
             PreparedStatement statement = conn.prepareStatement("select * from song where songName = ?");
             statement.setString(1, songName);
