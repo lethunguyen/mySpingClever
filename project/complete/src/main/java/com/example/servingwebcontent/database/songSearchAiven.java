@@ -1,0 +1,95 @@
+package com.example.servingwebcontent.database;
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+
+import com.example.servingwebcontent.Song;
+
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class songSearchAiven {
+
+    public songSearchAiven() {
+    }
+
+    /*
+     * to do
+     * mapping database data to Model Song
+     */
+
+    ArrayList<Song> items = new ArrayList<Song>();
+
+    /**
+     * @return
+     */
+    public ArrayList<Song> songAivenSearch(String songName) {
+
+        Connection conn = null;
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
+                    "sqluser", "password");
+
+            // conn = DriverManager.getConnection(pro.getURL());
+            Statement sta = conn.createStatement();
+
+            PreparedStatement statement = conn.prepareStatement("select * from song where songName = ?");
+            statement.setString(1, songName);
+            ResultSet resultSet = statement.executeQuery();
+
+            int index = 0;
+            int columnCount = resultSet.getMetaData().getColumnCount();
+            System.out.println("column #" + columnCount);
+
+            while (resultSet.next()) {
+                Song song = new Song();
+
+                String songID = resultSet.getString("songID");
+
+                // String songName = resultSet.getString("songName");
+
+                String songAuthor = resultSet.getString("songAuthor");
+
+                String country = resultSet.getString("country");
+
+                System.out.println("Song search AIVEN TEST:");
+                System.out.println(songID + " " + songName + " " + songAuthor);
+
+                song.setSongID(songID);
+                song.setSongName(songName);
+                song.setSongAuthor(songAuthor);
+                song.setSongCountry(country);
+
+                System.out.println("Get SONG in song Aiven");
+                System.out.println(song.getSongName());
+                System.out.println(index);
+
+                items.add(song);
+            }
+
+            resultSet.close();
+            sta.close();
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println("Error in database connecion");
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+        return items;
+
+    }
+
+}
