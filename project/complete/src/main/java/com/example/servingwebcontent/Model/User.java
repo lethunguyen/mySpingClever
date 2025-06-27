@@ -1,6 +1,5 @@
 package com.example.servingwebcontent.Model;
 
-
 public class User {
     String userName;
     String address;

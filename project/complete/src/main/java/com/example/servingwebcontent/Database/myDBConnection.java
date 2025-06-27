@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Controller
 public class myDBConnection {
-    myDBConnection() {
+
+    public myDBConnection() {
     };
 
     // @Value("${my.database.url}")
