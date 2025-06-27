@@ -59,8 +59,7 @@ public class songAiven {
             //my.close();
 
         } catch (Exception e) {
-            System.out.println("Error in database connecion");
-            System.out.println(e);
+            System.out.println("Error in database connecion :" + e);
             e.printStackTrace();
         }
 

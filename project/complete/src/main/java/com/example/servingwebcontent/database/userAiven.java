@@ -1,17 +1,11 @@
 package com.example.servingwebcontent.database;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 
 import org.springframework.stereotype.Controller;
-
-import com.example.servingwebcontent.ListUser;
 import com.example.servingwebcontent.User;
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
 
 @Controller
 public class userAiven {

@@ -26,8 +26,7 @@ public class songSearchAiven {
     public songSearchAiven() {
     }
 
-    /*
-     * to do
+    /* 
      * mapping database data to Model Song
      */
 
@@ -62,28 +61,28 @@ public class songSearchAiven {
 
                 String country = resultSet.getString("country");
 
-                System.out.println("Song search AIVEN TEST:");
-                System.out.println(songID + " " + songName + " " + songAuthor);
+         
+                System.out.println("Song search AIVEN TEST:"+ songID + " " + songName + " " + songAuthor);
 
                 song.setSongID(songID);
                 song.setSongName(songName);
                 song.setSongAuthor(songAuthor);
                 song.setSongCountry(country);
 
-                System.out.println("Get SONG in song Aiven");
-                System.out.println(song.getSongName());
+                System.out.println("Get SONG in song Aiven : "+ song.getSongName());
+          
                 System.out.println(index);
 
                 items.add(song);
             }
 
             resultSet.close();
-            sta.close();
+
             conn.close();
 
         } catch (Exception e) {
-            System.out.println("Error in database connecion");
-            System.out.println(e);
+            System.out.println("Error in database connecion :" + e );
+           
             e.printStackTrace();
         }
 

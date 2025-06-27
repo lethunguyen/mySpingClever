@@ -22,7 +22,6 @@ public class myDBConnection {
 
     String myDatabaseDriver = "com.mysql.cj.jdbc.Driver";
 
-    // Connection getconn = null;
     public Connection conn = null;
 
     public Statement getMyConn() {
@@ -30,15 +29,12 @@ public class myDBConnection {
         try {
 
             Class.forName(myDatabaseDriver);
-
             conn = DriverManager.getConnection(myDatabaseURL);
-
             Statement sta = conn.createStatement();
             return sta;
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.print("myDBConnection at34");
 
+        } catch (Exception e) {
+            System.out.println("myDBConnection at 34" + e);
         }
 
         return null;
