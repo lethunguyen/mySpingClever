@@ -10,24 +10,32 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Controller
 public class myDBConnection {
-    myDBConnection(){};
+    myDBConnection() {
+    };
 
     @Value("${my.database.url}")
-    private String myDatabaseURL;
+    protected String myDatabaseURL;
 
     @Value("${my.database.driver}")
-    private String myDatabaseDriver;
+    protected String myDatabaseDriver;
 
-    Connection getconn = null;
-
-    public Statement getMyConn(){
+   // Connection getconn = null;
+      Connection conn = null;
+    public Statement getMyConn() {
+      
 
         try {
-            Class.forName(myDatabaseDriver);
+            // Class.forName(myDatabaseDriver);
 
-            getconn = DriverManager.getConnection(myDatabaseURL);
+            // getconn = DriverManager.getConnection(myDatabaseURL);
 
-            Statement sta = getconn.createStatement();
+            // Statement sta = getconn.createStatement();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
+                    "sqluser", "password");
+            Statement sta = conn.createStatement();
             return sta;
         } catch (Exception e) {
             System.out.println(e);
@@ -35,7 +43,7 @@ public class myDBConnection {
 
         }
 
-         return null;
+        return null;
 
     }
 
