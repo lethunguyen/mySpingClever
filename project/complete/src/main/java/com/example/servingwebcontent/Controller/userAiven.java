@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.Database;
+package com.example.servingwebcontent.Controller;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 
+import com.example.servingwebcontent.Database.myDBConnection;
 import com.example.servingwebcontent.Model.User;
 
 @Controller
