@@ -14,4 +14,13 @@ public class GreetingController {
 		return "greeting";
 	}
 
+	@GetMapping("/test")
+	public String test(@RequestParam(name = "test", required=false, defaultValue="test") String test, Model model){
+
+		model.addAttribute("test", test);
+
+		System.out.println("t:"+test);
+		return "test";
+	}
+
 }

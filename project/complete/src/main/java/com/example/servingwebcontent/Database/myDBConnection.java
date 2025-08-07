@@ -16,7 +16,7 @@ public class myDBConnection {
     // @Value("${my.database.url}")
     // protected String myDatabaseURL;
 
-    String myDatabaseURL = "jdbc:mysql://avnadmin:AVNS_RE3O2bhYZ_1_6ER7YK7@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED";
+    String myDatabaseURL = "jdbc:mysql://avnadmin:AVNS_jhA9Lhe0hpI74N82V0q@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED";
 
     // @Value("${my.database.driver}")
     // protected String myDatabaseDriver;
