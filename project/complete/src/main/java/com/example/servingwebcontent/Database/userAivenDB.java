@@ -43,7 +43,13 @@ public class userAivenDB {
             ResultSet resultSet = statement.executeQuery();
             int index = 0;
             int columnCount = resultSet.getMetaData().getColumnCount();
+
+
+            
+            System.out.println("size query::"+resultSet.getFetchSize());
             System.out.println("column edit function #" + columnCount);
+
+
             String userID = resultSet.getString("userID");
             String userName = resultSet.getString("userName");
             String address = resultSet.getString("address");
