@@ -22,7 +22,7 @@ import com.example.servingwebcontent.Model.User;
 
 
 @Controller
-public class LoginController {
+public class Controller {
 
 	@GetMapping("/Login")
 	public String login(@RequestParam String fname, 
