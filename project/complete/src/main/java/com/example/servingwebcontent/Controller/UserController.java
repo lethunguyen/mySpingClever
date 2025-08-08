@@ -19,49 +19,38 @@ import com.example.servingwebcontent.Database.aivenConnection;
 import com.example.servingwebcontent.Database.insertToAiven;
 import com.example.servingwebcontent.Model.User;
 
-
-
-
 @Controller
 public class UserController {
 
 	@GetMapping("/useradd")
-	public String User( Model model) {
-      model.addAttribute("User", new User());
-		
+	public String User(Model model) {
+		model.addAttribute("User", new User());
+
 		return "useradd";
 	}
 
-
 	@PostMapping("/usersave")
-    @ResponseBody
-	public String SaveData( 
-			Model model, @ModelAttribute User User)  {
-				System.out.println("Hello addresss :::" +User);
+	public String SaveData(Model model, @ModelAttribute User User) {
+		System.out.println("Hello addresss :::" + User);
 
-        model.addAttribute("User", User); // Add populated object back to model for display
+		model.addAttribute("User", User); // Add populated object back to model for display
 
-       
 		try {
-			
-			
-				//model.addAttribute("name", fname);
-				//model.addAttribute("address",address);
 
-				User u = new User();
-				u.setUserName(User.getUserName());
-				u.setAddress(User.getAddress());
-				u.setUserID(User.getUserID());
-				
-				ArrayList<User> al = new ArrayList<User>();
-				al.add(u);
+			// model.addAttribute("name", fname);
+			// model.addAttribute("address",address);
 
-				
-				insertToAiven iu = new insertToAiven();
-				iu.insertToAivenDb(u);
-				model.addAttribute("listOfArray", al);
-				
-			
+			User u = new User();
+			u.setUserName(User.getUserName());
+			u.setAddress(User.getAddress());
+			u.setUserID(User.getUserID());
+
+			ArrayList<User> al = new ArrayList<User>();
+			al.add(u);
+
+			insertToAiven iu = new insertToAiven();
+			iu.insertToAivenDb(u);
+			model.addAttribute("listOfArray", al);
 
 		} catch (RuntimeException e) {
 
@@ -72,7 +61,7 @@ public class UserController {
 
 		}
 
-		return "greeting";
+		return "userlist";
 	}
 
 }
