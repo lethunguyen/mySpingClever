@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.lang.RuntimeException;
 import java.util.ArrayList;
@@ -25,9 +26,7 @@ public class UserController {
 
 	@PostMapping("/usersave")
 	public String SaveData(Model model, @ModelAttribute User User) {
-		System.out.println("Hello addresss :::" + User);
-		System.out.println("getAddress:::" + User.getAddress());
-		System.out.println("getUsername:::" + User.getUserName());
+		
 
 		model.addAttribute("User", User); // Add populated object back to model for display
 
