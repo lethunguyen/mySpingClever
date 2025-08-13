@@ -6,14 +6,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.example.servingwebcontent.Database.userAivenDB;
+import com.example.servingwebcontent.Database.userSearchAiven;
+import com.example.servingwebcontent.Model.User;
+
 @Controller
 public class EditController {
 
 	@GetMapping("/edit/{id}")
-	public String greeting(@PathVariable String id, Model model) {
+	public String editUser(@PathVariable String id, Model model) {
 		model.addAttribute("name", id);
-		System.out.println("User id: "+ id);
-		return "greeting";
+		System.out.println("User id: " + id);
+
+		// model user with id
+		User user = new userAivenDB().userSearch(id);
+
+		System.out.println("username:::"+user.getUserName());
+
+		model.addAttribute("User", user);
+
+		return "useredit";
 	}
 
 }
