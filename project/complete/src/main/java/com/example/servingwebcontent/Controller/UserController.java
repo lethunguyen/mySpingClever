@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.lang.RuntimeException;
 import java.util.ArrayList;
 
-
 import com.example.servingwebcontent.Database.insertToAiven;
 import com.example.servingwebcontent.Model.User;
 
@@ -26,12 +25,10 @@ public class UserController {
 
 	@PostMapping("/usersave")
 	public String SaveData(Model model, @ModelAttribute User User) {
-		
 
 		model.addAttribute("User", User); // Add populated object back to model for display
 
 		try {
-
 
 			User u = new User();
 			u.setUserName(User.getUserName());

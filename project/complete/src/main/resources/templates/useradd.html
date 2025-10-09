@@ -47,8 +47,7 @@
         <form action="#" th:action="@{/usersave}" th:object="${User}" method="post">
 
             <div class="container text-center">
-                <p type="text" th:field="*{userID}" class="form-control" 
-                        aria-describedby="addon-wrapping">
+                <input type="hidden" th:field="*{userID}" class="form-control" aria-describedby="addon-wrapping">
 
                 <div class="col-12 input-group flex-nowrap">
 

@@ -33,7 +33,7 @@ public class userAivenDB {
      * @return
      */
     public User userSearch(String id) {
-        try{
+        try {
 
             myDBConnection my = new myDBConnection();
             Connection conn = my.getOnlyConn();
@@ -44,11 +44,8 @@ public class userAivenDB {
             int index = 0;
             int columnCount = resultSet.getMetaData().getColumnCount();
 
-
-            
-            System.out.println("size query::"+resultSet.getFetchSize());
+            System.out.println("size query::" + resultSet.getFetchSize());
             System.out.println("column edit function #" + columnCount);
-
 
             String userID = resultSet.getString("userID");
             String userName = resultSet.getString("userName");
@@ -70,9 +67,28 @@ public class userAivenDB {
             e.printStackTrace();
         }
 
-        System.out.println("edit:::"+ item.getUserName());
+        System.out.println("edit:::" + item.getUserName());
 
         return item;
+
+    }
+
+    public void userDelete(String id) {
+        try {
+
+            myDBConnection my = new myDBConnection();
+            Connection conn = my.getOnlyConn();
+
+            PreparedStatement statement = conn.prepareStatement("delete from user where userID = ?");
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.close();
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println("Error in database connecion :" + e);
+            e.printStackTrace();
+        }
 
     }
 
