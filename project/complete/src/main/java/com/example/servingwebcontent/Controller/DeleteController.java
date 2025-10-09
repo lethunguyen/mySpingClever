@@ -1,5 +1,7 @@
 package com.example.servingwebcontent.Controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +22,17 @@ public class DeleteController {
 
 		// model user with id
 
-		User user = new userAivenDB();
-		user.deleteUser(id);
+	    userAivenDB user = new userAivenDB();
+		user.userDelete(id);
 
-		System.out.println("username:::"+user.getUserName());
+		ArrayList<User> userList = user.userList();
+	
 
-		model.addAttribute("User", user);
+		
 
-		return "useredit";
+		model.addAttribute("listOfArray", userList);
+
+		return "userlist";
 	}
 
 }

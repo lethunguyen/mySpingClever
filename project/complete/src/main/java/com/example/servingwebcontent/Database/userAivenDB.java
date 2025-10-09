@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -91,5 +92,59 @@ public class userAivenDB {
         }
 
     }
+
+     public ArrayList<User> userList() {
+
+
+        ArrayList<User> items = new ArrayList<User>();
+
+    
+
+        try {
+
+            myDBConnection my = new myDBConnection();
+            Statement sta = my.getMyConn();
+
+            ResultSet setdata = sta.executeQuery("select * from user");
+           
+            while (setdata.next()) {
+                User user = new User();
+
+                String userID = setdata.getString("userID");
+
+                String userName = setdata.getString("userName");
+
+                String address = setdata.getString("address");
+
+                
+
+                System.out.println("User AIVEN TEST:");
+                System.out.println(userID + " " + userName + " " + address);
+
+                user.setUserID(userID);
+                user.setUserName(userName);
+                user.setAddress(address);
+                
+
+                System.out.println("Get User in song Aiven");
+                System.out.println(user.getUserName());
+              
+
+                items.add(user);
+            }
+
+            setdata.close();
+            sta.close();
+            //my.close();
+
+        } catch (Exception e) {
+            System.out.println("Error in database connecion :" + e);
+            e.printStackTrace();
+        }
+
+        return items;
+
+    }
+     }
 
 }
