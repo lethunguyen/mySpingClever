@@ -25,4 +25,21 @@ public class WriteToFile {
         }
 
     }
+    public  void ToFileUser(User u) {
+        try {
+            
+            //int i = u.size() - 1;
+            FileWriter writer = new FileWriter("./complete/File/User.txt", true);
+            writer.append("\n");
+
+            writer.write(u.getUserName());
+            writer.write(u.getAddress());
+
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error at write to File!");
+            e.printStackTrace();
+        }
+
+    }
 }

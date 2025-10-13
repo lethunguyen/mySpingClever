@@ -1,10 +1,14 @@
 package com.example.servingwebcontent.Model;
 
 public class User {
-    String userName;
-    String address;
-    String userID;
-   
+    public String userName;
+    public String address;
+    public String userID;
+   public User (String name, String add){
+    userName = name;
+    address = add;
+
+   }
     public String getUserID(){
         return userID;
     }
