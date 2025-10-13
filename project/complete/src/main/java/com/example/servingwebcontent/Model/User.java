@@ -4,9 +4,11 @@ public class User {
     public String userName;
     public String address;
     public String userID;
+
+
    public User (String name, String add){
-    userName = name;
-    address = add;
+    this.userName = name;
+    this.address = add;
 
    }
     public String getUserID(){
