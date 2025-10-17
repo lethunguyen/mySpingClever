@@ -17,7 +17,8 @@ public class GreetingController {
 	public String User(Model model) {
 		User u = new User("test", "hanoi");
 		WriteToFile test = new WriteToFile();
-		test.ToFileUser(u);
+		System.out.println("username::"+u.getUserName());
+		test.ToFileUser(u.getUserName());
 	
 		model.addAttribute("User", u);
 

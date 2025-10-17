@@ -11,6 +11,9 @@ public class User {
     this.address = add;
 
    }
+   public User(){
+    
+   }
     public String getUserID(){
         return userID;
     }

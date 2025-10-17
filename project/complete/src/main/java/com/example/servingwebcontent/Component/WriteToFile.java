@@ -25,16 +25,20 @@ public class WriteToFile {
         }
 
     }
-    public  void ToFileUser(User u) {
+    public  void ToFileUser(String u) {
         try {
             
             //int i = u.size() - 1;
-            FileWriter writer = new FileWriter("./complete/File/User.txt", true);
+            FileWriter writer = new FileWriter("/workspaces/mySpingClever/project/complete/File/User.txt", true);
+
+            
+
             writer.append("\n");
 
-            writer.write(u.getUserName());
-            writer.write(u.getAddress());
+            writer.write("start writting:::");
 
+            writer.write(u);
+       
             writer.close();
         } catch (IOException e) {
             System.out.println("Error at write to File!");
