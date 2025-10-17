@@ -11,15 +11,15 @@ import com.example.servingwebcontent.Model.User;
 @Controller
 public class GreetingController {
 
-	
-
-	@GetMapping("/")
+	@GetMapping("/ghiFile")
 	public String User(Model model) {
-		User u = new User("test", "hanoi");
+		User u = new User("lopN04_phai_thuc_hanh_nhieu_len", "hanoi");
+
 		WriteToFile test = new WriteToFile();
-		System.out.println("username::"+u.getUserName());
+
+		System.out.println("username::" + u.getUserName());
 		test.ToFileUser(u.getUserName());
-	
+
 		model.addAttribute("User", u);
 
 		return "hello";

@@ -31,8 +31,7 @@ public class WriteToFile {
             //int i = u.size() - 1;
             FileWriter writer = new FileWriter("/workspaces/mySpingClever/project/complete/File/User.txt", true);
 
-            
-
+         
             writer.append("\n");
 
             writer.write("start writting:::");
